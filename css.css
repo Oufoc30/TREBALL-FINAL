@@ -1,0 +1,266 @@
+/* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
+:root{
+  --warm-1:#FFB347; /* mostaza/amarillo-naranja */
+  --warm-2:#F4A261; /* naranja suave */
+  --radius:16px;
+  --card-h:380px; /* altura de la viñeta en escritorio */
+  --header-h:140px; /* altura del encabezado fijado inferior */
+  --gap-x:51px;
+  --bg-w:1505.5px; /* ancho del bg-vector usado para alinear elementos */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #F4A83C url("Vector 1.png") no-repeat center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:140px;
+}
+}
+.site-header{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:1200px;
+  padding:8px 16px;
+  text-align:center;
+  z-index:60;
+  pointer-events:none; /* permite interacciones con el contenido debajo */
+}
+.site-header h1{pointer-events:auto;}
+.site-header h1{
+  color:#FFF;
+  text-align:center;
+  font-family:'Black Ops One', cursive;
+  font-size:96px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin:0;
+  letter-spacing:1px;
+}
+.subtitle{margin-top:8px;opacity:0.95}
+ .container{width:100%;margin:0;overflow-x:auto;padding:0 80px 0 80px;-webkit-overflow-scrolling:touch;position:relative;box-sizing:border-box;}  
+.container::-webkit-scrollbar{height:8px}
+.container::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:8px}
+.cards{
+  position:relative; /* crear contexto de apilamiento para situar la imagen detrás */
+  z-index:2; /* asegurar que las viñetas queden por encima de las nubes */
+  display:flex;
+  gap:var(--gap-x); /* separación horizontal precisa */
+  flex-wrap:nowrap; /* organizar horizontalmente en una sola fila */
+  justify-content:center; /* centrado horizontal */
+  align-items:flex-start;
+  padding:0 0 0; /* en escritorio se calculará dinámicamente la separación superior */
+} 
+.card{
+  position:relative;
+  width:100%;
+  max-width:300px; /* ancho máximo en móvil/tabla y fijo en escritorio más adelante */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .28s ease, box-shadow .28s ease, border-radius .28s ease, background-color .28s ease;
+  cursor:pointer;
+} 
+
+/* Escritorio: fijar tamaño exacto y layout sin scroll */
+@media (min-width:1001px){
+  /* evitar scroll vertical en escritorio */
+  html,body,main,.experiencia{height:100vh;overflow:hidden}
+  .card{width:300px;height:var(--card-h)}
+  .card img{height:60%}
+
+  /* Posicionar las viñetas a 150.5px del top y mantener 90.5px de separación con el título */
+  .cards{padding-top:150.5px;}
+
+  /* Posicionar la línea 124px por encima de las viñetas (150.5 - 124 = 26.5px) */
+  .divider-bar{top:26.5px}
+
+  /* Título centrado y pegado a la parte inferior */
+  .site-header{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:0;height:var(--header-h);z-index:60;pointer-events:none}
+  .site-header h1{pointer-events:auto;margin:0;padding:0;padding-bottom:0}
+  /* Ocultar subtitle en escritorio para que no cree espacio */
+  .site-header .subtitle{display:none}
+}
+.card img
+{display:block;
+width:100%;
+height:100%;
+object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s ease;z-index:1} 
+.divider-bar{position:fixed;top:26.5px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;z-index:220;pointer-events:none;}
+/* permitir interacción solo en el botón */
+.divider-bar .divider-btn{pointer-events:auto;z-index:221}
+.divider-bar .divider-btn{width:40px;height:40px;display:inline-block;object-fit:contain;pointer-events:auto}
+.divider-bar .divider-line{
+  width:9000px; /* más larga */
+  height:6px;
+  display:block;
+  max-width:calc(100% - 6px); /* deja 3px de espacio en cada lateral */
+  margin:0 auto;
+  object-fit:cover;
+  pointer-events:none;
+  border-radius:3px;
+  /* borde visual de 3px a cada lado */
+  box-shadow: inset 3px 0 0 rgba(0,0,0,0.18), inset -3px 0 0 rgba(0,0,0,0.18);
+}
+@media (max-width:640px){
+  .divider-bar .divider-line{height:4px;max-width:calc(100% - 12px)}
+}
+/* Imagen de fondo decorativa (ajustada para sobresalir de las viñetas) */
+.bg-vector{
+  position:absolute;
+  left:50%;
+  top:120px; /* un poco más arriba para sobresalir de las viñetas */
+  transform:translateX(-50%);
+  width:1505.5px;
+  max-width:100%;
+  height:auto; /* proporcional: evita que la altura fija provoque scroll */
+  /* Limitar la altura para que no provoque overflow vertical */
+  max-height:calc(100vh - 120px - var(--header-h) - 16px);
+  object-fit:contain;
+  z-index:0; /* detrás de las viñetas */
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Mask positioned at bottom-left of the bg-vector (no JS) */
+.mask-group{
+  position:absolute;
+  width:30px;
+  height:76px;
+  /* align to bg-vector's bottom-left using bg position/size variables */
+  left:calc(50% - (var(--bg-w) / 2) + 12px);
+  top:calc(120px + 483.23px + 40px);
+  transform:none;
+  z-index:1; /* above bg-vector but below cards */
+  pointer-events:none;
+} 
+
+/* Responsive fallback: if container narrows, pin mask near left edge */
+@media (max-width:1000px){
+  .mask-group{left:12px;top:calc(100px + 260px - 76px + 12px)}
+} 
+@media (max-width:640px){
+  .mask-group{left:12px;top:calc(88px + 260px - 76px + 12px);width:24px;height:60px}
+}
+
+/* Nubes pegadas al top del body */
+.cloud{position:fixed;top:0;pointer-events:none;z-index:1;opacity:1}
+.cloud-left{left:0;transform:translateX(0);width:200px;max-width:20vw}
+.cloud-right{right:0;transform:translateX(0);width:200px;max-width:20vw}
+@media (max-width:1000px){
+  /* en pantallas pequeñas empujar ligeramente desde los bordes */
+  .cloud-left{left:8px}
+  .cloud-right{right:8px}
+}
+@media (max-width:640px){
+  .cloud-left,.cloud-right{width:120px;max-width:32vw}
+}
+
+/* Evitar overflow vertical causado por elementos absolutos en pantallas pequeñas */
+@media (max-width:1000px){
+  .container{overflow-y:hidden}
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:16px;
+  background:transparent;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .28s ease, transform .28s ease, background-color .28s ease, color .28s ease;
+  z-index:5;
+} 
+.overlay h3{
+  margin:0 0 8px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:24px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+.overlay p{margin:0;font-size:0.95rem;max-width:90%}
+/* Hover / focus / active */
+.card:hover,.card:focus,.card.active{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 14px 30px rgba(0,0,0,0.25);
+  border-radius:30px;
+  background:#5D672B;
+}
+.card:hover img,.card:focus img,.card.active img{
+  transform:scale(1.06);
+  opacity:0;visibility:hidden;
+}
+.card:hover .overlay,.card:focus .overlay,.card.active .overlay{
+  opacity:1;transform:translateY(0);background:#5D672B;color:#fff;z-index:10
+}
+
+@media (max-width:1000px){
+  .cards{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:640px){
+  .site-header{padding:28px 12px}
+  .container{padding:20px}
+  .cards{flex-direction:column;gap:16px;padding:32px 0 0}
+  .card{width:92%;height:auto}
+  .card img{width:100%;height:260px;object-fit:cover}
+}
+
+/* Asegurar que la sección cubre la altura de la ventana para respetar los 150.5px */
+.experiencia{min-height:100vh;position:relative;box-sizing:border-box}
+
+/* Controles en esquina inferior izquierda */
+.corner-controls{position:fixed;left:20px;bottom:8px;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls .poly{position:absolute;left:0;bottom:0;width:98px;height:98px;transition:transform .5s ease;display:block}
+.corner-controls .poly:hover{transform:rotate(180deg)}
+.corner-controls .flechas{position:absolute;left:70px;bottom:16px;width:88px;height:50px;display:block}
+
+/* Controles en esquina inferior derecha (espejo) */
+.corner-controls.right{position:fixed;right:20px;bottom:8px;left:auto;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls.right .poly{position:absolute;right:0;bottom:0;left:auto;width:98px;height:98px;transition:transform .5s ease;display:block}
+.corner-controls.right .flechas{position:absolute;right:70px;bottom:16px;left:auto;width:88px;height:50px;display:block}
+
+/* Ajustes responsivos para móviles */
+@media (max-width:640px){
+  .corner-controls{left:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls .poly{width:78px;height:78px}
+  .corner-controls .flechas{left:58px;bottom:8px;width:68px;height:40px}
+
+  .corner-controls.right{right:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls.right .poly{width:78px;height:78px}
+  .corner-controls.right .flechas{right:58px;bottom:8px;width:68px;height:40px}
+}
+
+/* Accesibilidad */
+.card:focus{outline:3px solid rgba(255,255,255,0.14);outline-offset:6px}
+
+/* Pequeños toques responsivos y de presentación */
+main{width:100%;flex:1}
