@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
 
   cards.forEach(card => {
-    // Habilitar toggle por click (útil en móviles sin hover)
+    // Navegar a la página interna al hacer click en la tarjeta
     card.addEventListener('click', (e) => {
-      card.classList.toggle('active');
+      window.location.href = 'internal.html';
     });
 
-    // Soporte por teclado: Enter/Space para abrir, Escape para cerrar
+    // Soporte por teclado: Enter/Space para navegar, Escape para cerrar overlays
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        card.classList.toggle('active');
+        window.location.href = 'internal.html';
       } else if (e.key === 'Escape') {
         card.classList.remove('active');
       }
@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cards.forEach(c => c.classList.remove('active'));
     }
   });
+
+  // Hacer que el botón Flechas de la esquina izquierda navegue a la página interna
+  const leftFlechas = document.querySelector('.corner-controls:not(.right) .flechas');
+  if (leftFlechas) {
+    leftFlechas.addEventListener('click', () => { window.location.href = 'internal.html'; });
+  }
 
   // Ajuste inicial y en redimensionado: escalar fila de tarjetas para que quepa sin scroll (segunda opción)
   function debounce(fn, wait = 100){

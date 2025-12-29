@@ -149,7 +149,7 @@ object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s
   height:76px;
   /* align to bg-vector's bottom-left using bg position/size variables */
   left:calc(50% - (var(--bg-w) / 2) + 12px);
-  top:calc(120px + 483.23px + 40px);
+  top:calc(120px + 483.23px - 76px + 12px);
   transform:none;
   z-index:1; /* above bg-vector but below cards */
   pointer-events:none;
