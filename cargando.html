@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cargando</title>
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css.css">
 	<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Aclonica&family=Joan&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +18,33 @@
 			<div id="percent">0%</div>
 		</div>
 	</div>
-<script src="js/js.js"></script>	
+
+<script>
+	// Animar barra de progreso y redirigir al finalizar
+	const progressBar = document.getElementById('progress');
+	const percentText = document.getElementById('percent');
+	let start = null;
+	const duration = 5000; // 5 segundos
+	// Obtener el parámetro next de la URL
+	function getNextPage() {
+		const params = new URLSearchParams(window.location.search);
+		return params.get('next') || 'index.html';
+	}
+	function animateProgress(ts) {
+		if (!start) start = ts;
+		const elapsed = ts - start;
+		const percent = Math.min(100, (elapsed / duration) * 100);
+		if (progressBar) progressBar.style.width = percent + '%';
+		if (percentText) percentText.textContent = Math.round(percent) + '%';
+		if (elapsed < duration) {
+			requestAnimationFrame(animateProgress);
+		} else {
+			window.location.href = getNextPage();
+		}
+	}
+	requestAnimationFrame(animateProgress);
+</script>
+<script src="js/js.js"></script>
 
 </body>
 </html>

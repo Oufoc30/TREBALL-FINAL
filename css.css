@@ -1,3 +1,15 @@
+.flechas,
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+
+.flechas:hover,
+.flechas-right:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  z-index: 2;
+}
 /* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
 :root{
   --warm-1:#FFB347; /* mostaza/amarillo-naranja */
@@ -26,7 +38,7 @@ body{
   align-items:center;
   padding-bottom:140px;
 }
-}
+
 .site-header{
   position:fixed;
   bottom:20px;
@@ -264,3 +276,272 @@ object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s
 
 /* Pequeños toques responsivos y de presentación */
 main{width:100%;flex:1}
+
+
+/*colores*/
+:root {
+    --blue: #006E96;
+    --light-blue: #0093C4;
+    --orange: #F4A83C;
+    --light-orange: #F1BC71;
+    --white: #FFFFFF;
+    --black: #000000;
+    --light-blue-bg: #77D5D8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+/*HOME*/
+body {
+    margin:0%;
+    padding:0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.home-container{
+    width: 1512px;
+    height:100vh;
+    background:#006E96;
+    margin:0; /* inner element, wrapper handles centering */
+    display:block;
+    --flatWidth: 884px;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    position: static; /* no longer the positioning reference */
+}
+/* Wrapper that holds the clipped container and the plane as siblings.
+   Ensure the wrapper is positioned so the plane can be placed relative to it. */
+.home-title{ 
+    color: #F4A83C;
+    text-align:center;
+    text-shadow: -2px 2px 7.6px #006E96;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 70px;
+    right: 134px;
+}
+
+.home-title .especial{
+    color: #F4A83C;
+    font-family: "Black Ops One";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.home-image{
+    width: 628px;
+    height: 639px;
+    position: absolute;
+    top: 40px;
+    left: 884px;
+}
+
+.home-description{
+    width: 693px;
+    height: 271px;
+    position: absolute; 
+    top: 250px;
+    right: 24px;
+    font-family: Joan;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #024F6B;
+    text-align: center;
+
+}
+
+.home-image2{
+    width: 989px;
+    height: 1102px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+/* Botón en el home container, 94px debajo del párrafo */
+.home-btn{
+    position: absolute;
+    top: 455px; /* 427px (top párrafo) + 271px (alto párrafo) + 94px separación */
+    right: 185px; /* alineado con la descripción */
+    display: inline-flex;
+    padding: 24px 66px;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 9px 9px 4px 0 rgba(0, 110, 150, 0.60);
+    cursor: pointer;
+    font-family: Joan;
+    margin-bottom: 122px;
+    margin-top: 94px;
+
+    color: #F1BC71;
+    text-align: center;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Transition states: after 1s the page will get the `animate` class */
+.home-container{
+    transition: clip-path 0.8s ease 0ms;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+}
+
+.home-image{
+    
+    transition: left 1.6s cubic-bezier(.4,1.5,.5,1) 0ms;
+  
+}
+
+
+/* Animated end state: only the clip-path and the plane move */
+.animate .home-container{
+    -webkit-clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+    clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+}
+
+.animate .home-image{
+    left: 62px; /* avión queda con 62px desde la izquierda */
+}
+
+
+/*Cargando*/
+:root{--bg:#f7f7fb;--bar-bg:#e6e6ef;--bar-fill:#F1BC71;} 
+		html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:var(--bg);}
+		.center{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+		#logo{max-width:180px;width:40%;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.08));}
+		.progress-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+		.progress-bar{width:220px;max-width:70vw;height:14px;background:var(--bar-bg);border-radius:12px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+		.progress{height:100%;width:0%;background:var(--bar-fill);transition:width 0.2s linear}
+		#percent{display:none}
+		@media (max-width:420px){#logo{width:50%}}
+/*PREGUNTA 1*/
+/*Pregunta 2*/
+/*Pregunta 3*/
+
+
+
+
+
+
+
+
+
+
+
+/*Transicion fotos*/
+
+.destino-container{background-color: var(--light-blue-bg);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px; /* reducir espacio superior para subir el h2 */
+    overflow: hidden; /* ocultar partes de las nubes fuera del contenedor */
+}
+
+/* ...existing code... */
+h2{
+    color: var(--black);
+    text-align: center;
+    font-family: "Black Ops One", cursive;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    position: absolute; /* mantener el título en la misma posición visual */
+    top: 50px; /* margen superior solicitado */
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    z-index: 1000; /* asegurar que el título quede por encima de las nubes */
+    margin: 0;
+    padding: 0;
+}
+.nubes{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0%); /* centrar horizontalmente, preparar para animación Y */
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    z-index: 1; /* asegurar que las nubes queden detrás del título */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    animation: cloudsMove 8s linear infinite;
+}
+
+.nubes-2{
+    /* empieza fuera abajo; la animación tiene delay para encajar con la primera */
+    transform: translateX(-50%) translateY(100%);
+    animation-delay: 0.2s;
+}
+
+@keyframes cloudsMove{
+    0%{ transform: translateX(-50%) translateY(0%); }
+    100%{ transform: translateX(-50%) translateY(-100%); }
+}
+
+/* Slider de destinos (cuadrado 280x300) */
+.slider-wrapper{
+    width: 318px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    top: 430px; /* un poco más arriba */
+    left: 637px; /* más a la izquierda */
+    transform: translateX(-50%);
+}
+.slider{
+    width: 250px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    background: #ddd;
+}
+.slider img{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+.slider img.active{
+    opacity: 1;
+}
+
+.camara{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    width: 150px;
+    height: auto;
+    z-index: 2; /* asegurar que la cámara quede por encima de las nubes */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    width: 600px;
+    height: 500px;
+    margin-bottom: 50px;
+}
