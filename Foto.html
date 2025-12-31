@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="css.css">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Aclonica&family=Joan&display=swap" rel="stylesheet">
 </head>
-
-<body>
-<body style="background:  #77D5D863"> </body>
+<body style="background:  #77D5D8; transition: opacity 1s;">
         <h2>REVELAR DESTINO</h2>
           <img class="nubes" src="img/deco nubes.png" alt="Nubes">
               <img class="camara" src="img/camara.png" alt="Cámara fotográfica">
@@ -39,6 +37,15 @@
         </div>
     </div>
 </body>
+<script>
+// Fundido suave y redirección a revelacion.html después de 5 segundos
+setTimeout(function() {
+    document.body.style.opacity = '0';
+    setTimeout(function() {
+        window.location.href = 'revelacion.html';
+    }, 1000);
+}, 5000);
+</script>
 <script src="js/js.js"></script>
 <script> 
 </script>

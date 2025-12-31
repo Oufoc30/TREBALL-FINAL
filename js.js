@@ -27,6 +27,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   const cards = document.querySelectorAll('.card');
 
+  // Detectar en qué página estamos y guardar la respuesta seleccionada
+  const path = window.location.pathname;
+  // index.html: experiencia, internal.html: presupuesto, internal2.html: duracion
+  let pregunta = null;
+  if (path.endsWith('index.html') || path.endsWith('/')) pregunta = 'experiencia';
+  else if (path.endsWith('internal.html')) pregunta = 'presupuesto';
+  else if (path.endsWith('internal2.html')) pregunta = 'duracion';
+
+  if (pregunta) {
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        // Obtener valor de la respuesta según alt o texto
+        let valor = '';
+        if (pregunta === 'experiencia') {
+          valor = (card.querySelector('h3')?.textContent || card.querySelector('img')?.alt || '').toLowerCase();
+        } else if (pregunta === 'presupuesto') {
+          valor = (card.querySelector('h3')?.textContent || card.querySelector('img')?.alt || '').replace(/[^+]/g, '+').toLowerCase();
+          if (!valor) valor = 'indiferente';
+        } else if (pregunta === 'duracion') {
+          valor = (card.querySelector('h3')?.textContent || card.querySelector('img')?.alt || '').toLowerCase();
+          if (valor.includes('indiferente')) valor = 'indiferente';
+          else if (valor.match(/1.*3/)) valor = '1-3';
+          else if (valor.match(/4.*7/)) valor = '4-7';
+          else if (valor.match(/8|\+8/)) valor = '+8';
+        }
+        sessionStorage.setItem(pregunta, valor);
+      });
+    });
+  }
+
   // Detectar si estamos en index.html
   const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
   cards.forEach(card => {

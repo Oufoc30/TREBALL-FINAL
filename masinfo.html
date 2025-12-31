@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Más información</title>
+  <link rel="stylesheet" href="css.css">
+  <!-- Estilos movidos a css.css -->
+</head>
+<body class="masinfo-bg">
+  <img src="img/Union.png" alt="Decoración esquina izquierda" class="union-izq">
+  <img src="img/Union (1).png" alt="Decoración esquina derecha" class="union-der">
+  <div class="retorno-inicio-centro">
+    <img src="img/Boton retorno inicio.png" alt="Retornar al inicio" id="btn-retorno-inicio">
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('btn-retorno-inicio');
+      if (btn) {
+        btn.style.cursor = 'pointer';
+        btn.addEventListener('click', function() {
+          window.location.href = 'paginainicial.html';
+        });
+      }
+    });
+  </script>
+  <div class="olas-inferiores">
+    <img src="img/ola.png" alt="Ola decorativa" class="ola-img ola-img-grande">
+    <img src="img/ola.png" alt="Ola decorativa" class="ola-img">
+    <img src="img/ola.png" alt="Ola decorativa" class="ola-img">
+    <img src="img/ola.png" alt="Ola decorativa" class="ola-img">
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.querySelector('.rectangulos-info').classList.add('visible');
+      }, 200);
+    });
+  </script>
+    <div class="rectangulos-info">
+      <div class="rect-info rect-gastronomia">
+        <div class="rect-titulo">GASTRONOMIA</div>
+        <div class="rect-desc">No te pierdas de probar...</div>
+      </div>
+      <div class="rect-info rect-cultura">
+        <div class="rect-titulo">CULTURA</div>
+        <div class="rect-desc">Debes visitar...</div>
+      </div>
+      <div class="rect-info rect-historia">
+        <div class="rect-titulo">HISTORIA</div>
+        <div class="rect-desc">No te olvides de visitar el emblematico...</div>
+      </div>
+    </div>
+  <script>
+    document.getElementById('btn-retorno-inicio').onclick = function() {
+      window.location.href = 'paginainicial.html';
+    };
+  </script>
+</body>
+</html>

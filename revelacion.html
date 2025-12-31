@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revelación de Destino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <img id="bg-blur" src="img/Pais Vasco.jpg" alt="Fondo borroso" class="bg-blur">
+    <div class="destino-main">
+        <div class="destino-img">
+            <img id="destino-img" src="img/Pais Vasco.jpg" alt="País Vasco">
+            <div class="destino-titulo" id="destino-titulo">
+                País Vasco
+                <div class="destino-sub" id="destino-sub">España</div>
+            </div>
+            <button class="destino-btn">Saber más</button>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var btn = document.querySelector('.destino-btn');
+                if (btn) {
+                    btn.addEventListener('click', function() {
+                        window.location.href = 'masinfo.html';
+                    });
+                }
+            });
+        </script>
+        </div>
+    </div>
+    <script>
+      // Lista de destinos (puedes añadir más)
+            const destinos = [
+                { imagen: 'img/Pais Vasco.jpg', titulo: 'País Vasco', subtitulo: 'España' },
+                { imagen: 'img/Paris.jpg', titulo: 'París', subtitulo: 'Francia' },
+                { imagen: 'img/Albania.jpg', titulo: 'Albania', subtitulo: 'Europa' },
+                { imagen: 'img/Atenas.jpg', titulo: 'Atenas', subtitulo: 'Grecia' },
+                { imagen: 'img/Budapest.webp', titulo: 'Budapest', subtitulo: 'Hungría' },
+                { imagen: 'img/Cananda.jpg', titulo: 'Toronto', subtitulo: 'Canadá' },
+                { imagen: 'img/Chiang Mai.jpg', titulo: 'Chiang Mai', subtitulo: 'Tailandia' },
+                { imagen: 'img/Costa Amalfitana, Italia.jpg', titulo: 'Costa Amalfitana', subtitulo: 'Italia' },
+                { imagen: 'img/Costa Rica.jpg', titulo: 'Costa Rica', subtitulo: 'America Central' },
+                { imagen: 'img/El cairo.jpg', titulo: 'El Cairo', subtitulo: 'Egipto' },
+                { imagen: 'img/Eslovenia.jpg', titulo: 'Eslovenia', subtitulo: 'Europa' },
+                { imagen: 'img/Estambul.jpg', titulo: 'Estambul', subtitulo: 'Turquía' },
+                { imagen: 'img/Maldivas.jpg', titulo: 'Maldivas', subtitulo: 'Asia Meridional' },
+                { imagen: 'img/Nicaragua.jpg', titulo: 'Nicaragua', subtitulo: 'America Central' },
+                { imagen: 'img/nueva zelanda.jpg', titulo: 'Nueva Zelanda', subtitulo: 'Oceanía' },
+                { imagen: 'img/Patagonia.jpg', titulo: 'Patagonia', subtitulo: 'Argentina/Chile' },
+                { imagen: 'img/Polonia.png', titulo: 'Polonia', subtitulo: 'Europa' }
+            ];
+            // Función de decisión según reglas
+            function obtenerDestinos(experiencia, presupuesto, duracion) {
+                experiencia = experiencia.toLowerCase();
+                presupuesto = presupuesto.toLowerCase();
+                duracion = duracion.toLowerCase();
+                const reglas = {
+                    calma: {"+":{"1-3":["Albania","Polonia"],"4-7":["Asturias","Albania","Nicaragua"],"+8":["Nicaragua"],"indiferente":["Albania","Polonia","Asturias","Nicaragua"]},"++":{"1-3":["País Vasco"],"4-7":["Asturias","País Vasco","Eslovenia"],"+8":["Costa Rica"],"indiferente":["Asturias","País Vasco","Eslovenia","Costa Rica"]},"+++":{"1-3":["Costa Amalfitana"],"4-7":["Costa Amalfitana"],"+8":["Maldivas"],"indiferente":["Costa Amalfitana","Maldivas"]},"indiferente":{"1-3":["País Vasco","Polonia"],"4-7":["Asturias","Albania","Eslovenia"],"+8":["Maldivas","Nicaragua"],"indiferente":["Albania","Polonia","Asturias","Nicaragua","País Vasco","Eslovenia","Costa Rica","Costa Amalfitana","Maldivas"]}},
+                    aventura: {"+":{"1-3":["Albania"],"4-7":["Albania","Nicaragua"],"+8":["Nicaragua"],"indiferente":["Albania","Nicaragua"]},"++":{"1-3":["Eslovenia"],"4-7":["Costa Rica","Eslovenia"],"+8":["Costa Rica"],"indiferente":["Costa Rica","Eslovenia"]},"+++":{"1-3":[],"4-7":["Canadá"],"+8":["Canadá","Nueva Zelanda","Patagonia"],"indiferente":["Canadá","Nueva Zelanda","Patagonia"]},"indiferente":{"1-3":["Albania","Eslovenia"],"4-7":["Costa Rica","Eslovenia"],"+8":["Canadá","Nueva Zelanda","Patagonia"],"indiferente":["Albania","Nicaragua","Eslovenia","Costa Rica","Canadá","Nueva Zelanda","Patagonia"]}},
+                    cultural: {"+":{"1-3":["Budapest","Polonia"],"4-7":["Budapest","Polonia","El Cairo"],"+8":["El Cairo"],"indiferente":["Budapest","Polonia","El Cairo"]},"++":{"1-3":["Estambul","Atenas","País Vasco"],"4-7":["Estambul","Atenas"],"+8":["Chiang Mai"],"indiferente":["Estambul","Atenas","Chiang Mai","País Vasco"]},"+++":{"1-3":["París"],"4-7":["París"],"+8":[],"indiferente":["París"]},"indiferente":{"1-3":["París","Budapest","Estambul"],"4-7":["Atenas","Chiang Mai"],"+8":["El Cairo"],"indiferente":["Budapest","Polonia","El Cairo","Estambul","Atenas","Chiang Mai","País Vasco","París"]}},
+                    indiferente: {"+":{"1-3":["Budapest","Polonia"],"4-7":["Albania","Chiang Mai"],"+8":["Nicaragua"],"indiferente":["Albania","Polonia","Budapest","Chiang Mai","Nicaragua"]},"++":{"1-3":["País Vasco","Estambul"],"4-7":["Asturias","Grecia","Eslovenia"],"+8":["Costa Rica"],"indiferente":["País Vasco","Asturias","Grecia","Eslovenia","Costa Rica"]},"+++":{"1-3":["París"],"4-7":["Costa Amalfitana"],"+8":["Maldivas","Nueva Zelanda","Patagonia"],"indiferente":["París","Costa Amalfitana","Maldivas","Nueva Zelanda","Patagonia"]},"indiferente":{"1-3":["París","Budapest"],"4-7":["Asturias","Grecia"],"+8":["Canadá","Maldivas"],"indiferente":["Albania","Asturias","Budapest","Canadá","Chiang Mai","Costa Amalfitana","Costa Rica","El Cairo","Eslovenia","Estambul","Grecia","Maldivas","Nicaragua","Nueva Zelanda","País Vasco","París","Patagonia","Polonia"]}}
+                };
+                const exp = experiencia === "cultural" ? "cultural"
+                                    : experiencia === "aventura" ? "aventura"
+                                    : experiencia === "calma" ? "calma"
+                                    : "indiferente";
+                const pres = ["+", "++", "+++"] .includes(presupuesto) ? presupuesto : "indiferente";
+                const dur = ["1-3", "4-7", "+8"].includes(duracion) ? duracion : "indiferente";
+                if (reglas[exp] && reglas[exp][pres] && reglas[exp][pres][dur]) {
+                    return reglas[exp][pres][dur];
+                }
+                return [];
+            }
+
+            // Leer respuestas del usuario
+            const experiencia = sessionStorage.getItem('experiencia') || 'indiferente';
+            const presupuesto = sessionStorage.getItem('presupuesto') || 'indiferente';
+            const duracion = sessionStorage.getItem('duracion') || 'indiferente';
+            // Obtener destinos posibles
+            const posibles = obtenerDestinos(experiencia, presupuesto, duracion);
+            // Filtrar info de destinos
+            const posiblesInfo = destinos.filter(d => posibles.includes(d.titulo));
+            // Elegir uno al azar
+            const destino = posiblesInfo.length > 0 ? posiblesInfo[Math.floor(Math.random() * posiblesInfo.length)] : destinos[Math.floor(Math.random() * destinos.length)];
+            // Cambiar imagen de fondo y principal
+            document.getElementById('bg-blur').src = destino.imagen;
+            document.getElementById('destino-img').src = destino.imagen;
+            document.getElementById('destino-img').alt = destino.titulo;
+            // Cambiar título y subtítulo
+            document.getElementById('destino-titulo').childNodes[0].nodeValue = destino.titulo + '\n';
+            document.getElementById('destino-sub').textContent = destino.subtitulo;
+
+            // Botón "saber más" navega a masinfo.html
+            const btnSaberMas = document.getElementById('saber-mas');
+            if (btnSaberMas) {
+                btnSaberMas.addEventListener('click', function() {
+                    window.location.href = 'masinfo.html';
+                });
+            }
+    </script>
+</body>
+</html>
