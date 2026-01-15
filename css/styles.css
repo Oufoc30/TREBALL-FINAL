@@ -1,0 +1,2260 @@
+
+/*colores*/
+:root {
+    --blue: #006E96;
+    --light-blue: #0093C4;
+    --orange: #F4A83C;
+    --light-orange: #F1BC71;
+    --white: #FFFFFF;
+    --black: #000000;
+    --light-blue-bg: #77D5D8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+/*HOME*/
+body {
+    margin:0%;
+    padding:0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.home-container{
+    width: 1512px;
+    height:100vh;
+    background:#006E96;
+    margin:0; /* inner element, wrapper handles centering */
+    display:block;
+    --flatWidth: 884px;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    position: static; /* no longer the positioning reference */
+}
+/* Wrapper that holds the clipped container and the plane as siblings.
+   Ensure the wrapper is positioned so the plane can be placed relative to it. */
+.home-title{ 
+    color: #F4A83C;
+    text-align:center;
+    text-shadow: -2px 2px 7.6px #006E96;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 70px;
+    right: 134px;
+}
+
+.home-title .especial{
+    color: #F4A83C;
+    font-family: "Black Ops One";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.home-image{
+    width: 628px;
+    height: 639px;
+    position: absolute;
+    top: 40px;
+    left: 884px;
+}
+
+.home-description{
+    width: 693px;
+    height: 271px;
+    position: absolute; 
+    top: 250px;
+    right: 24px;
+    font-family: Joan;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(black);
+    text-align: center;
+
+}
+
+.home-image2{
+    width: 989px;
+    height: 1102px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+/* Botón en el home container, 94px debajo del párrafo */
+.home-btn{
+    position: absolute;
+    top: 455px; /* 427px (top párrafo) + 271px (alto párrafo) + 94px separación */
+    right: 185px; /* alineado con la descripción */
+    display: inline-flex;
+    padding: 24px 66px;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 9px 9px 4px 0 rgba(0, 110, 150, 0.60);
+    cursor: pointer;
+    font-family: Joan;
+    margin-bottom: 122px;
+    margin-top: 94px;
+
+    color: #F1BC71;
+    text-align: center;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Transition states: after 1s the page will get the `animate` class */
+.home-container{
+    transition: clip-path 0.8s ease 0ms;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+}
+
+.home-image{
+    
+    transition: left 0.8s ease 0ms;
+  
+}
+
+
+/* Animated end state: only the clip-path and the plane move */
+.animate .home-container{
+    -webkit-clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+    clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+}
+
+.animate .home-image{
+    left: 62px; /* avión queda con 62px desde la izquierda */
+}
+
+
+/*Cargando*/
+:root{--bg:#f7f7fb;--bar-bg:#e6e6ef;--bar-fill:#F1BC71;} 
+		html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:var(--bg);}
+		.center{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+		#logo{max-width:180px;width:40%;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.08));}
+		.progress-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+		.progress-bar{width:220px;max-width:70vw;height:14px;background:var(--bar-bg);border-radius:12px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+		.progress{height:100%;width:0%;background:var(--bar-fill);transition:width 0.2s linear}
+		#percent{display:none}
+		@media (max-width:420px){#logo{width:50%}}
+
+
+/*PREGUNTA 1*/
+
+.flechas {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+
+.flechas:hover,
+.flechas-right:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  z-index: 2;
+}
+
+
+/* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
+:root{
+  --warm-1:#FFB347; /* mostaza/amarillo-naranja */
+  --warm-2:#F4A261; /* naranja suave */
+  --radius:16px;
+  --card-h:380px; /* altura de la viñeta en escritorio */
+  --header-h:140px; /* altura del encabezado fijado inferior */
+  --gap-x:80px;
+  --bg-w:1505.5px; /* ancho del bg-vector usado para alinear elementos */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #F4A83C url("Vector 1.png") no-repeat center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:140px;
+}
+
+.site-header{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:1200px;
+  padding:8px 16px;
+  text-align:center;
+  z-index:60;
+  pointer-events:none; /* permite interacciones con el contenido debajo */
+}
+.site-header h1{pointer-events:auto;}
+.site-header h1{
+  color:#FFF;
+  text-align:center;
+  font-family:'Black Ops One', cursive;
+  font-size:96px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin:0;
+  letter-spacing:1px;
+}
+.subtitle{margin-top:8px;opacity:0.95}
+ .container{width:100%;margin:0;overflow-x:auto;padding:0 80px 0 80px;-webkit-overflow-scrolling:touch;position:relative;box-sizing:border-box;}  
+.container::-webkit-scrollbar{height:8px}
+.container::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:8px}
+.cards{
+  position:relative; /* crear contexto de apilamiento para situar la imagen detrás */
+  z-index:2; /* asegurar que las viñetas queden por encima de las nubes */
+  display:flex;
+  gap:var(--gap-x); /* separación horizontal precisa */
+  flex-wrap:nowrap; /* organizar horizontalmente en una sola fila */
+  justify-content:center; /* centrado horizontal */
+  align-items:flex-start;
+  padding:0 0 0; /* en escritorio se calculará dinámicamente la separación superior */
+} 
+.card{
+  position:relative;
+  width:100%;
+  max-width:250px; /* ancho máximo en móvil/tabla y fijo en escritorio más adelante */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .28s ease, box-shadow .28s ease, border-radius .28s ease, background-color .28s ease;
+  cursor:pointer;
+} 
+
+/* Escritorio: fijar tamaño exacto y layout sin scroll */
+@media (min-width:1001px){
+  /* evitar scroll vertical en escritorio */
+  html,body,main,.experiencia{height:100vh;overflow:hidden}
+  .card{width:300px;height:var(--card-h)}
+  .card img{height:60%}
+
+  /* Posicionar las viñetas a 150.5px del top y mantener 90.5px de separación con el título */
+  .cards{padding-top:150.5px;}
+
+  /* Posicionar la línea 124px por encima de las viñetas (150.5 - 124 = 26.5px) */
+  .divider-bar{top:26.5px}
+
+  /* Título centrado y pegado a la parte inferior */
+  .site-header{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:0;height:var(--header-h);z-index:60;pointer-events:none}
+  .site-header h1{pointer-events:auto;margin:0;padding:0;padding-bottom:0}
+  /* Ocultar subtitle en escritorio para que no cree espacio */
+  .site-header .subtitle{display:none}
+}
+.card img
+{display:block;
+width:100%;
+height:100%;
+object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s ease;z-index:1} 
+.divider-bar{position:fixed;top:60px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;z-index:220;pointer-events:none;}
+/* permitir interacción solo en el botón */
+.divider-bar .divider-btn{pointer-events:auto;z-index:221}
+.divider-bar .divider-btn{position:fixed;width:85px;height:85px;display:inline-block;object-fit:contain;pointer-events:auto}
+.divider-bar .divider-line{
+  width:1300px; /* más larga */
+  height:6px;
+  display:block;
+  max-width:none; /* deja 3px de espacio en cada lateral */
+  margin:0 auto;
+  object-fit:cover;
+  pointer-events:none;
+  border-radius:3px;
+  /* borde visual de 3px a cada lado */
+  box-shadow: inset 3px 0 0 rgba(0,0,0,0.18), inset -3px 0 0 rgba(0,0,0,0.18);
+}
+@media (max-width:640px){
+  .divider-bar .divider-line{height:4px;max-width:calc(100% - 12px)}
+}
+/* Imagen de fondo decorativa (ajustada para sobresalir de las viñetas) */
+.bg-vector{
+  position:absolute;
+  left:50%;
+  top:120px; /* un poco más arriba para sobresalir de las viñetas */
+  transform:translateX(-50%);
+  width:1505.5px;
+  max-width:100%;
+  height:auto; /* proporcional: evita que la altura fija provoque scroll */
+  /* Limitar la altura para que no provoque overflow vertical */
+  max-height:calc(100vh - 120px - var(--header-h) - 16px);
+  object-fit:contain;
+  z-index:0; /* detrás de las viñetas */
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Mask positioned at bottom-left of the bg-vector (no JS) */
+.mask-group{
+  position:absolute;
+  width:30px;
+  height:76px;
+  /* align to bg-vector's bottom-left using bg position/size variables */
+  left:calc(50% - (var(--bg-w) / 2) + 12px);
+  top:calc(120px + 483.23px - 76px + 12px);
+  transform:none;
+  z-index:1; /* above bg-vector but below cards */
+  pointer-events:none;
+} 
+
+/* Responsive fallback: if container narrows, pin mask near left edge */
+@media (max-width:1000px){
+  .mask-group{left:12px;top:calc(100px + 260px - 76px + 12px)}
+} 
+@media (max-width:640px){
+  .mask-group{left:12px;top:calc(88px + 260px - 76px + 12px);width:24px;height:60px}
+}
+
+/* Nubes pegadas al top del body */
+.cloud{position:fixed;top:0;pointer-events:none;z-index:1;opacity:1}
+.cloud-left{left:0;transform:translateX(0);width:200px;max-width:20vw}
+.cloud-right{right:0;transform:translateX(0);width:200px;max-width:20vw}
+@media (max-width:1000px){
+  /* en pantallas pequeñas empujar ligeramente desde los bordes */
+  .cloud-left{left:8px}
+  .cloud-right{right:8px}
+}
+@media (max-width:640px){
+  .cloud-left,.cloud-right{width:120px;max-width:32vw}
+}
+
+/* Evitar overflow vertical causado por elementos absolutos en pantallas pequeñas */
+@media (max-width:1000px){
+  .container{overflow-y:hidden}
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:16px;
+  background:transparent;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .28s ease, transform .28s ease, background-color .28s ease, color .28s ease;
+  z-index:5;
+} 
+.overlay h3{
+  margin:0 0 8px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:24px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+.overlay p{margin:0;font-size:0.95rem;max-width:90%}
+/* Hover / focus / active */
+.card:hover,.card:focus,.card.active{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 14px 30px rgba(0,0,0,0.25);
+  border-radius:30px;
+  background:#5D672B;
+}
+.card:hover img,.card:focus img,.card.active img{
+  transform:scale(1.06);
+  opacity:0;visibility:hidden;
+}
+.card:hover .overlay,.card:focus .overlay,.card.active .overlay{
+  opacity:1;transform:translateY(0);background:#5D672B;color:#fff;z-index:10
+}
+
+@media (max-width:1000px){
+  .cards{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:640px){
+  .site-header{padding:28px 12px}
+  .container{padding:20px}
+  .cards{flex-direction:column;gap:16px;padding:32px 0 0}
+  .card{width:92%;height:auto}
+  .card img{width:100%;height:260px;object-fit:cover}
+}
+
+/* Asegurar que la sección cubre la altura de la ventana para respetar los 150.5px */
+.experiencia{min-height:100vh;position:relative;box-sizing:border-box}
+
+/* Controles en esquina inferior izquierda */
+.corner-controls{position:fixed;left:20px;bottom:8px;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls .poly{position:absolute;left:0;bottom:0;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls .poly:hover{transform:rotate(180deg)}
+.corner-controls .flechas{position:absolute;left:20px;bottom:1px;width:88px;height:50px;display:block}
+
+/* Controles en esquina inferior derecha (espejo) */
+.corner-controls.right{position:fixed;right:20px;bottom:8px;left:auto;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls.right .poly{position:absolute;right:0;bottom:0;left:auto;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls.right .flechas{position:absolute;right:20px;bottom:1px;left:auto;width:88px;height:50px;display:block; z-index:5;}
+
+/* Ajustes responsivos para móviles */
+@media (max-width:640px){
+  .corner-controls{left:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls .poly{width:60px;height:60px}
+  .corner-controls .flechas{left:58px;bottom:8px;width:68px;height:40px}
+
+  .corner-controls.right{right:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls.right .poly{width:60px;height:60px}
+  .corner-controls.right .flechas{right:58px;bottom:1px;width:68px;height:40px}
+}
+
+/* Accesibilidad */
+.card:focus{outline:3px solid rgba(255,255,255,0.14);outline-offset:6px}
+
+/* Pequeños toques responsivos y de presentación */
+main{width:100%;flex:1}
+
+
+/*Pregunta 2*/
+
+.flechas {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+
+.flechas:hover,
+.flechas-right:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  z-index: 2;
+}
+
+
+/* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
+:root{
+  --warm-1:#FFB347; /* mostaza/amarillo-naranja */
+  --warm-2:#F4A261; /* naranja suave */
+  --radius:16px;
+  --card-h:380px; /* altura de la viñeta en escritorio */
+  --header-h:140px; /* altura del encabezado fijado inferior */
+  --gap-x:80px;
+  --bg-w:1505.5px; /* ancho del bg-vector usado para alinear elementos */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #F4A83C url("Vector 1.png") no-repeat center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:140px;
+}
+
+.experiencia.site-header{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:1200px;
+  padding:8px 16px;
+  text-align:center;
+  z-index:60;
+  pointer-events:none; /* permite interacciones con el contenido debajo */
+}
+.site-header h1{pointer-events:auto;}
+.site-header h3{
+  color:#FFF;
+  text-align:center;
+  font-family:'Black Ops One', cursive;
+  font-size:96px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin:0;
+  letter-spacing:1px;
+}
+.subtitle{margin-top:8px;opacity:0.95}
+ .container{width:100%;margin:0;overflow-x:auto;padding:0 80px 0 80px;-webkit-overflow-scrolling:touch;position:relative;box-sizing:border-box;}  
+.container::-webkit-scrollbar{height:8px}
+.container::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:8px}
+.cards{
+  position:relative; /* crear contexto de apilamiento para situar la imagen detrás */
+  z-index:2; /* asegurar que las viñetas queden por encima de las nubes */
+  display:flex;
+  gap:var(--gap-x); /* separación horizontal precisa */
+  flex-wrap:nowrap; /* organizar horizontalmente en una sola fila */
+  justify-content:center; /* centrado horizontal */
+  align-items:flex-start;
+  padding:0 0 0; /* en escritorio se calculará dinámicamente la separación superior */
+} 
+.experiencia .card{
+  position:relative;
+  width:100%;
+  max-width:250px; /* ancho máximo en móvil/tabla y fijo en escritorio más adelante */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .28s ease, box-shadow .28s ease, border-radius .28s ease, background-color .28s ease;
+  cursor:pointer;
+} 
+
+/* Escritorio: fijar tamaño exacto y layout sin scroll */
+@media (min-width:1001px){
+  /* evitar scroll vertical en escritorio */
+  html,body,main,.experiencia{height:100vh;overflow:hidden}
+  .card{width:300px;height:var(--card-h)}
+  .card img{height:60%}
+
+  /* Posicionar las viñetas a 150.5px del top y mantener 90.5px de separación con el título */
+  .cards{padding-top:150.5px;}
+
+  /* Posicionar la línea 124px por encima de las viñetas (150.5 - 124 = 26.5px) */
+  .divider-bar{top:26.5px}
+
+  /* Título centrado y pegado a la parte inferior */
+  .site-header{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:0;height:var(--header-h);z-index:60;pointer-events:none}
+  .site-header h1{pointer-events:auto;margin:0;padding:0;padding-bottom:0}
+  /* Ocultar subtitle en escritorio para que no cree espacio */
+  .site-header .subtitle{display:none}
+}
+.card img
+{display:block;
+width:100%;
+height:100%;
+object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s ease;z-index:1} 
+.divider-bar{position:fixed;top:60px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;z-index:220;pointer-events:none;}
+/* permitir interacción solo en el botón */
+.divider-bar .divider-btn{pointer-events:auto;z-index:221}
+.divider-bar .divider-btn{position:fixed;width:85px;height:85px;display:inline-block;object-fit:contain;pointer-events:auto}
+.divider-bar .divider-line{
+  width:1300px; /* más larga */
+  height:6px;
+  display:block;
+  max-width:none; /* deja 3px de espacio en cada lateral */
+  margin:0 auto;
+  object-fit:cover;
+  pointer-events:none;
+  border-radius:3px;
+  /* borde visual de 3px a cada lado */
+  box-shadow: inset 3px 0 0 rgba(0,0,0,0.18), inset -3px 0 0 rgba(0,0,0,0.18);
+}
+@media (max-width:640px){
+  .divider-bar .divider-line{height:4px;max-width:calc(100% - 12px)}
+}
+/* Imagen de fondo decorativa (ajustada para sobresalir de las viñetas) */
+.bg-vector{
+  position:absolute;
+  left:50%;
+  top:120px; /* un poco más arriba para sobresalir de las viñetas */
+  transform:translateX(-50%);
+  width:1505.5px;
+  max-width:100%;
+  height:auto; /* proporcional: evita que la altura fija provoque scroll */
+  /* Limitar la altura para que no provoque overflow vertical */
+  max-height:calc(100vh - 120px - var(--header-h) - 16px);
+  object-fit:contain;
+  z-index:0; /* detrás de las viñetas */
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Mask positioned at bottom-left of the bg-vector (no JS) */
+.mask-group{
+  position:absolute;
+  width:30px;
+  height:76px;
+  /* align to bg-vector's bottom-left using bg position/size variables */
+  left:calc(50% - (var(--bg-w) / 2) + 12px);
+  top:calc(120px + 483.23px - 76px + 12px);
+  transform:none;
+  z-index:1; /* above bg-vector but below cards */
+  pointer-events:none;
+} 
+
+/* Responsive fallback: if container narrows, pin mask near left edge */
+@media (max-width:1000px){
+  .mask-group{left:12px;top:calc(100px + 260px - 76px + 12px)}
+} 
+@media (max-width:640px){
+  .mask-group{left:12px;top:calc(88px + 260px - 76px + 12px);width:24px;height:60px}
+}
+
+/* Nubes pegadas al top del body */
+.cloud{position:fixed;top:0;pointer-events:none;z-index:1;opacity:1}
+.cloud-left{left:0;transform:translateX(0);width:200px;max-width:20vw}
+.cloud-right{right:0;transform:translateX(0);width:200px;max-width:20vw}
+@media (max-width:1000px){
+  /* en pantallas pequeñas empujar ligeramente desde los bordes */
+  .cloud-left{left:8px}
+  .cloud-right{right:8px}
+}
+@media (max-width:640px){
+  .cloud-left,.cloud-right{width:120px;max-width:32vw}
+}
+
+/* Evitar overflow vertical causado por elementos absolutos en pantallas pequeñas */
+@media (max-width:1000px){
+  .container{overflow-y:hidden}
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:16px;
+  background:transparent;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .28s ease, transform .28s ease, background-color .28s ease, color .28s ease;
+  z-index:5;
+  
+} 
+.overlay h3 {
+  margin:0 0 8px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:24px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+
+.overlay h3 .special{
+  margin:0 0 0px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:80px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+
+.overlay p{margin:0;font-size:0.95rem;max-width:90%}
+/* Hover / focus / active */
+.card:hover,.card:focus,.card.active{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 14px 30px rgba(0,0,0,0.25);
+  border-radius:30px;
+  background:#5D672B;
+}
+.card:hover img,.card:focus img,.card.active img{
+  transform:scale(1.06);
+  opacity:0;visibility:hidden;
+}
+.card:hover .overlay,.card:focus .overlay,.card.active .overlay{
+  opacity:1;transform:translateY(0);background: var(--warm-1);color:#fff;z-index:10
+}
+
+@media (max-width:1000px){
+  .cards{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:640px){
+  .site-header{padding:28px 12px}
+  .container{padding:20px}
+  .cards{flex-direction:column;gap:16px;padding:32px 0 0}
+  .card{width:92%;height:auto}
+  .card img{width:100%;height:260px;object-fit:cover}
+}
+
+/* Asegurar que la sección cubre la altura de la ventana para respetar los 150.5px */
+.experiencia{min-height:100vh;position:relative;box-sizing:border-box}
+
+/* Controles en esquina inferior izquierda */
+.corner-controls{position:fixed;left:20px;bottom:8px;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls .poly{position:absolute;left:0;bottom:0;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls .poly:hover{transform:rotate(180deg)}
+.corner-controls .flechas{position:absolute;left:12px;bottom:1px;width:88px;height:50px;display:block}
+
+/* Controles en esquina inferior derecha (espejo) */
+.corner-controls.right{position:fixed;right:20px;bottom:8px;left:auto;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls.right .poly{position:absolute;right:0;bottom:0;left:auto;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls.right .flechas{position:absolute;right:20px;bottom:1px;left:auto;width:88px;height:50px;display:block; z-index:5;}
+
+/* Ajustes responsivos para móviles */
+@media (max-width:640px){
+  .corner-controls{left:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls .poly{width:60px;height:60px}
+  .corner-controls .flechas{left:58px;bottom:8px;width:68px;height:40px}
+
+  .corner-controls.right{right:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls.right .poly{width:60px;height:60px}
+  .corner-controls.right .flechas{right:58px;bottom:1px;width:68px;height:40px}
+}
+
+/* Accesibilidad */
+.card:focus{outline:3px solid rgba(255,255,255,0.14);outline-offset:6px}
+
+/* Pequeños toques responsivos y de presentación */
+main{width:100%;flex:1}
+
+
+/*Pregunta 3*/
+
+.flechas {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+
+.flechas:hover,
+.flechas-right:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  z-index: 2;
+}
+
+
+/* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
+:root{
+  --warm-1:#FFB347; /* mostaza/amarillo-naranja */
+  --warm-2:#F4A261; /* naranja suave */
+  --radius:16px;
+  --card-h:380px; /* altura de la viñeta en escritorio */
+  --header-h:140px; /* altura del encabezado fijado inferior */
+  --gap-x:80px;
+  --bg-w:1505.5px; /* ancho del bg-vector usado para alinear elementos */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #F4A83C url("Vector 1.png") no-repeat center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:140px;
+}
+
+.site-header{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:1200px;
+  padding:8px 16px;
+  text-align:center;
+  z-index:60;
+  pointer-events:none; /* permite interacciones con el contenido debajo */
+}
+.site-header h1{pointer-events:auto;}
+.site-header h1{
+  color:#FFF;
+  text-align:center;
+  font-family:'Black Ops One', cursive;
+  font-size:96px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin:0;
+  letter-spacing:1px;
+}
+.subtitle{margin-top:8px;opacity:0.95}
+ .container{width:100%;margin:0;overflow-x:auto;padding:0 80px 0 80px;-webkit-overflow-scrolling:touch;position:relative;box-sizing:border-box;}  
+.container::-webkit-scrollbar{height:8px}
+.container::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:8px}
+.cards{
+  position:relative; /* crear contexto de apilamiento para situar la imagen detrás */
+  z-index:2; /* asegurar que las viñetas queden por encima de las nubes */
+  display:flex;
+  gap:var(--gap-x); /* separación horizontal precisa */
+  flex-wrap:nowrap; /* organizar horizontalmente en una sola fila */
+  justify-content:center; /* centrado horizontal */
+  align-items:flex-start;
+  padding:0 0 0; /* en escritorio se calculará dinámicamente la separación superior */
+} 
+.card{
+  position:relative;
+  width:100%;
+  max-width:250px; /* ancho máximo en móvil/tabla y fijo en escritorio más adelante */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .28s ease, box-shadow .28s ease, border-radius .28s ease, background-color .28s ease;
+  cursor:pointer;
+} 
+
+/* Escritorio: fijar tamaño exacto y layout sin scroll */
+@media (min-width:1001px){
+  /* evitar scroll vertical en escritorio */
+  html,body,main,.experiencia{height:100vh;overflow:hidden}
+  .card{width:300px;height:var(--card-h)}
+  .card img{height:60%}
+
+  /* Posicionar las viñetas a 150.5px del top y mantener 90.5px de separación con el título */
+  .cards{padding-top:150.5px;}
+
+  /* Posicionar la línea 124px por encima de las viñetas (150.5 - 124 = 26.5px) */
+  .divider-bar{top:26.5px}
+
+  /* Título centrado y pegado a la parte inferior */
+  .site-header{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:0;height:var(--header-h);z-index:60;pointer-events:none}
+  .site-header h1{pointer-events:auto;margin:0;padding:0;padding-bottom:0}
+  /* Ocultar subtitle en escritorio para que no cree espacio */
+  .site-header .subtitle{display:none}
+}
+.card img
+{display:block;
+width:100%;
+height:100%;
+object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s ease;z-index:1} 
+.divider-bar{position:fixed;top:60px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;z-index:220;pointer-events:none;}
+/* permitir interacción solo en el botón */
+.divider-bar .divider-btn{pointer-events:auto;z-index:221}
+.divider-bar .divider-btn{position:fixed;width:85px;height:85px;display:inline-block;object-fit:contain;pointer-events:auto}
+.divider-bar .divider-line{
+  width:1300px; /* más larga */
+  height:6px;
+  display:block;
+  max-width:none; /* deja 3px de espacio en cada lateral */
+  margin:0 auto;
+  object-fit:cover;
+  pointer-events:none;
+  border-radius:3px;
+  /* borde visual de 3px a cada lado */
+  box-shadow: inset 3px 0 0 rgba(0,0,0,0.18), inset -3px 0 0 rgba(0,0,0,0.18);
+}
+@media (max-width:640px){
+  .divider-bar .divider-line{height:4px;max-width:calc(100% - 12px)}
+}
+/* Imagen de fondo decorativa (ajustada para sobresalir de las viñetas) */
+.bg-vector{
+  position:absolute;
+  left:50%;
+  top:120px; /* un poco más arriba para sobresalir de las viñetas */
+  transform:translateX(-50%);
+  width:1505.5px;
+  max-width:100%;
+  height:auto; /* proporcional: evita que la altura fija provoque scroll */
+  /* Limitar la altura para que no provoque overflow vertical */
+  max-height:calc(100vh - 120px - var(--header-h) - 16px);
+  object-fit:contain;
+  z-index:0; /* detrás de las viñetas */
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Mask positioned at bottom-left of the bg-vector (no JS) */
+.mask-group{
+  position:absolute;
+  width:30px;
+  height:76px;
+  /* align to bg-vector's bottom-left using bg position/size variables */
+  left:calc(50% - (var(--bg-w) / 2) + 12px);
+  top:calc(120px + 483.23px - 76px + 12px);
+  transform:none;
+  z-index:1; /* above bg-vector but below cards */
+  pointer-events:none;
+} 
+
+/* Responsive fallback: if container narrows, pin mask near left edge */
+@media (max-width:1000px){
+  .mask-group{left:12px;top:calc(100px + 260px - 76px + 12px)}
+} 
+@media (max-width:640px){
+  .mask-group{left:12px;top:calc(88px + 260px - 76px + 12px);width:24px;height:60px}
+}
+
+/* Nubes pegadas al top del body */
+.cloud{position:fixed;top:0;pointer-events:none;z-index:1;opacity:1}
+.cloud-left{left:0;transform:translateX(0);width:200px;max-width:20vw}
+.cloud-right{right:0;transform:translateX(0);width:200px;max-width:20vw}
+@media (max-width:1000px){
+  /* en pantallas pequeñas empujar ligeramente desde los bordes */
+  .cloud-left{left:8px}
+  .cloud-right{right:8px}
+}
+@media (max-width:640px){
+  .cloud-left,.cloud-right{width:120px;max-width:32vw}
+}
+
+/* Evitar overflow vertical causado por elementos absolutos en pantallas pequeñas */
+@media (max-width:1000px){
+  .container{overflow-y:hidden}
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:16px;
+  background:transparent;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .28s ease, transform .28s ease, background-color .28s ease, color .28s ease;
+  z-index:5;
+} 
+.overlay h3{
+  margin:0 0 8px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:24px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+.overlay p{margin:0;font-size:0.95rem;max-width:90%}
+/* Hover / focus / active */
+.card:hover,.card:focus,.card.active{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 14px 30px rgba(0,0,0,0.25);
+  border-radius:30px;
+  background:#5D672B;
+}
+.card:hover img,.card:focus img,.card.active img{
+  transform:scale(1.06);
+  opacity:0;visibility:hidden;
+}
+.card:hover .overlay,.card:focus .overlay,.card.active .overlay{
+  opacity:1;transform:translateY(0);background:#5D672B;color:#fff;z-index:10
+}
+
+@media (max-width:1000px){
+  .cards{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:640px){
+  .site-header{padding:28px 12px}
+  .container{padding:20px}
+  .cards{flex-direction:column;gap:16px;padding:32px 0 0}
+  .card{width:92%;height:auto}
+  .card img{width:100%;height:260px;object-fit:cover}
+}
+
+/* Asegurar que la sección cubre la altura de la ventana para respetar los 150.5px */
+.experiencia{min-height:100vh;position:relative;box-sizing:border-box}
+
+/* Controles en esquina inferior izquierda */
+.corner-controls{position:fixed;left:20px;bottom:8px;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls .poly{position:absolute;left:0;bottom:0;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls .poly:hover{transform:rotate(180deg)}
+.corner-controls .flechas{position:absolute;left:20px;bottom:1px;width:88px;height:50px;display:block}
+
+/* Controles en esquina inferior derecha (espejo) */
+.corner-controls.right{position:fixed;right:20px;bottom:8px;left:auto;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls.right .poly{position:absolute;right:0;bottom:0;left:auto;width:60px;height:60px;transition:transform .5s ease;display:block}
+.corner-controls.right .flechas{position:absolute;right:20px;bottom:1px;left:auto;width:88px;height:50px;display:block; z-index:5;}
+
+/* Ajustes responsivos para móviles */
+@media (max-width:640px){
+  .corner-controls{left:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls .poly{width:60px;height:60px}
+  .corner-controls .flechas{left:58px;bottom:8px;width:68px;height:40px}
+
+  .corner-controls.right{right:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls.right .poly{width:60px;height:60px}
+  .corner-controls.right .flechas{right:58px;bottom:1px;width:68px;height:40px}
+}
+
+/* Accesibilidad */
+.card:focus{outline:3px solid rgba(255,255,255,0.14);outline-offset:6px}
+
+/* Pequeños toques responsivos y de presentación */
+main{width:100%;flex:1}
+
+
+    
+
+/*Transicion fotos*/
+
+.destino-container{background-color: var(--light-blue-bg);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px; /* reducir espacio superior para subir el h2 */
+    overflow: hidden; /* ocultar partes de las nubes fuera del contenedor */
+}
+
+/* ...existing code... */
+h2{
+    color: var(--black);
+    text-align: center;
+    font-family: "Black Ops One", cursive;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    position: absolute; /* mantener el título en la misma posición visual */
+    top: 50px; /* margen superior solicitado */
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    z-index: 1000; /* asegurar que el título quede por encima de las nubes */
+    margin: 0;
+    padding: 0;
+}
+.nubes{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0%); /* centrar horizontalmente, preparar para animación Y */
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    z-index: 1; /* asegurar que las nubes queden detrás del título */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    animation: cloudsMove 8s linear infinite;
+}
+
+.nubes-2{
+    /* empieza fuera abajo; la animación tiene delay para encajar con la primera */
+    transform: translateX(-50%) translateY(100%);
+    animation-delay: 0.2s;
+}
+
+@keyframes cloudsMove{
+    0%{ transform: translateX(-50%) translateY(0%); }
+    100%{ transform: translateX(-50%) translateY(-100%); }
+}
+
+/* Slider de destinos (cuadrado 280x300) */
+.slider-wrapper{
+    width: 318px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    padding-top: 250px; /* espacio desde la parte superior */
+    margin-right: 690px;
+}
+.slider{
+    width: 250px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    background: #ddd;
+}
+.slider img{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+.slider img.active{
+    opacity: 1;
+}
+
+.camara{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    width: 150px;
+    height: auto;
+    z-index: 2; /* asegurar que la cámara quede por encima de las nubes */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    width: 600px;
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+/* --- Animación de entrada para los rectángulos verticales --- */
+.rectangulos-info {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 2.2s ease, transform 2.2s ease;
+}
+.rectangulos-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* --- Animación de olas --- */
+@keyframes ola-move {
+  0% { transform: translateY(0) scaleX(1); }
+  20% { transform: translateY(-10px) scaleX(1.03); }
+  40% { transform: translateY(0) scaleX(0.98); }
+  60% { transform: translateY(10px) scaleX(1.01); }
+  80% { transform: translateY(0) scaleX(1.02); }
+  100% { transform: translateY(0) scaleX(1); }
+}
+.ola-img, .ola-img-grande {
+  animation: ola-move 3.5s ease-in-out infinite;
+}
+.ola-img-grande {
+  animation-delay: 0.2s;
+}
+.olas-inferiores .ola-img:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.olas-inferiores .ola-img:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.olas-inferiores .ola-img:nth-child(4) {
+  animation-delay: 1.1s;
+}
+.ola-img-grande {
+  width: 60vw;
+  height: 180%;
+  z-index: 31;
+}
+/* --- Olas inferiores en masinfo.html --- */
+.olas-inferiores {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 30;
+}
+.ola-img {
+  width: 25vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+/* --- Fin olas inferiores --- */
+/* --- Rectángulos verticales info en masinfo.html --- */
+/* --- Rectángulos verticales info en masinfo.html (ajustados) --- */
+.rectangulos-info {
+  position: fixed;
+/* Olas inferiores ajustadas para estar en el límite inferior */
+.ola-img {
+  width: 32vw;
+  height: 32vh;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.ola-img-grande {
+  width: 80vw;
+  height: 32vh;
+  margin-right: -8vw;
+  z-index: 31;
+}
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16vw;
+  z-index: 15;
+  pointer-events: none;
+}
+.rect-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 23px;
+  width: 280px;
+  min-width: 200px;
+  max-width: 340px;
+  padding: 48px 36px 48px 36px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  pointer-events: auto;
+}
+.rect-gastronomia {
+  background: #024F6B;
+  height: 570px;
+}
+.rect-cultura {
+  background: #FFF;
+  height: 470px;
+  align-self: flex-end;
+}
+.rect-historia {
+  background: #024F6B;
+  height: 400px;
+  align-self: flex-end;
+}
+.rect-titulo, .rect-desc {
+  color: #F4A83C;
+  text-align: center;
+  font-family: 'Joan', serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+.rect-desc {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* --- Fin rectángulos info --- */
+/* --- Fin rectángulos info --- */
+/* --- Botón retorno inicio en masinfo.html --- */
+.retorno-inicio-centro {
+  position: absolute;
+  top: 16vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.retorno-inicio-centro img {
+  width: 90px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(.4,1.6,.4,1);
+}
+.retorno-inicio-centro img:hover {
+  transform: scale(1.18);
+  filter: drop-shadow(0 2px 12px #024F6B44);
+}
+/* --- Fin botón retorno inicio --- */
+/* --- Estilos para masinfo.html --- */
+body.masinfo-bg {
+  background: rgba(119, 213, 216, 0.39);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+.union-izq {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px; /* 120px x 4 */
+  height: auto;
+  z-index: 10;
+}
+.union-der {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 480px; /* 120px x 4 */
+  height: auto;
+  z-index: 10;
+}
+.contenido-mas-info {
+  margin-top: 160px;
+  text-align: center;
+  color: #222;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+/* --- Fin estilos masinfo.html --- */
+body.revelacion-bg {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+.bg-blur {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  filter: blur(18px) brightness(0.8);
+  z-index: 1;
+}
+.destino-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.destino-img {
+  width: 1330px;
+  height: 872px;
+  aspect-ratio: 665/436;
+  max-width: 98vw;
+  max-height: 90vh;
+  border-radius: 83px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.destino-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 83px;
+  display: block;
+}
+.destino-titulo {
+  position: absolute;
+  top: 32px;
+  right: 40px;
+  text-align: right;
+  color: #FFF;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Aclonica', sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  z-index: 3;
+}
+.destino-sub {
+  font-size: 32px;
+  color: #FFF;
+  font-family: 'Aclonica', sans-serif;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 8px;
+  font-weight: 400;
+}
+.destino-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #FFF;
+  color: #F4A83C;
+  font-family: 'Aclonica', sans-serif;
+  font-size: 32px;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 48px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+  z-index: 4;
+}
+.destino-btn:hover {
+  background: #F4A83C;
+  color: #FFF;
+}
+@media (max-width: 700px) {
+  .destino-img { width: 98vw; }
+  .destino-titulo { font-size: 36px; right: 16px; top: 16px; }
+  .destino-btn { font-size: 20px; padding: 12px 24px; }
+}
+.flechas,
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
+
+.flechas:hover,
+.flechas-right:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  z-index: 2;
+}
+/* Estilos para 'EXPERIENCIA' — Fondo cálido, tarjetas, overlays y responsividad */
+:root{
+  --warm-1:#FFB347; /* mostaza/amarillo-naranja */
+  --warm-2:#F4A261; /* naranja suave */
+  --radius:16px;
+  --card-h:380px; /* altura de la viñeta en escritorio */
+  --header-h:140px; /* altura del encabezado fijado inferior */
+  --gap-x:51px;
+  --bg-w:1505.5px; /* ancho del bg-vector usado para alinear elementos */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #F4A83C url("Vector 1.png") no-repeat center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-bottom:140px;
+}
+
+.site-header{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:1200px;
+  padding:8px 16px;
+  text-align:center;
+  z-index:60;
+  pointer-events:none; /* permite interacciones con el contenido debajo */
+}
+.site-header h1{pointer-events:auto;}
+.site-header h1{
+  color:#FFF;
+  text-align:center;
+  font-family:'Black Ops One', cursive;
+  font-size:96px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin:0;
+  letter-spacing:1px;
+}
+.subtitle{margin-top:8px;opacity:0.95}
+ .container{width:100%;margin:0;overflow-x:auto;padding:0 80px 0 80px;-webkit-overflow-scrolling:touch;position:relative;box-sizing:border-box;}  
+.container::-webkit-scrollbar{height:8px}
+.container::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:8px}
+.cards{
+  position:relative; /* crear contexto de apilamiento para situar la imagen detrás */
+  z-index:2; /* asegurar que las viñetas queden por encima de las nubes */
+  display:flex;
+  gap:var(--gap-x); /* separación horizontal precisa */
+  flex-wrap:nowrap; /* organizar horizontalmente en una sola fila */
+  justify-content:center; /* centrado horizontal */
+  align-items:flex-start;
+  padding:0 0 0; /* en escritorio se calculará dinámicamente la separación superior */
+} 
+.card{
+  position:relative;
+  width:100%;
+  max-width:300px; /* ancho máximo en móvil/tabla y fijo en escritorio más adelante */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  transition: transform .28s ease, box-shadow .28s ease, border-radius .28s ease, background-color .28s ease;
+  cursor:pointer;
+} 
+
+/* Escritorio: fijar tamaño exacto y layout sin scroll */
+@media (min-width:1001px){
+  /* evitar scroll vertical en escritorio */
+  html,body,main,.experiencia{height:100vh;overflow:hidden}
+  .card{width:300px;height:var(--card-h)}
+  .card img{height:60%}
+
+  /* Posicionar las viñetas a 150.5px del top y mantener 90.5px de separación con el título */
+  .cards{padding-top:150.5px;}
+
+  /* Posicionar la línea 124px por encima de las viñetas (150.5 - 124 = 26.5px) */
+  .divider-bar{top:26.5px}
+
+  /* Título centrado y pegado a la parte inferior */
+  .site-header{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:0;height:var(--header-h);z-index:60;pointer-events:none}
+  .site-header h1{pointer-events:auto;margin:0;padding:0;padding-bottom:0}
+  /* Ocultar subtitle en escritorio para que no cree espacio */
+  .site-header .subtitle{display:none}
+}
+.card img
+{display:block;
+width:100%;
+height:100%;
+object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .28s ease;z-index:1} 
+.divider-bar{position:fixed;top:26.5px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;z-index:220;pointer-events:none;}
+/* permitir interacción solo en el botón */
+.divider-bar .divider-btn{pointer-events:auto;z-index:221}
+.divider-bar .divider-btn{width:40px;height:40px;display:inline-block;object-fit:contain;pointer-events:auto}
+.divider-bar .divider-line{
+  width:9000px; /* más larga */
+  height:6px;
+  display:block;
+  max-width:calc(100% - 6px); /* deja 3px de espacio en cada lateral */
+  margin:0 auto;
+  object-fit:cover;
+  pointer-events:none;
+  border-radius:3px;
+  /* borde visual de 3px a cada lado */
+  box-shadow: inset 3px 0 0 rgba(0,0,0,0.18), inset -3px 0 0 rgba(0,0,0,0.18);
+}
+@media (max-width:640px){
+  .divider-bar .divider-line{height:4px;max-width:calc(100% - 12px)}
+}
+/* Imagen de fondo decorativa (ajustada para sobresalir de las viñetas) */
+.bg-vector{
+  position:absolute;
+  left:50%;
+  top:120px; /* un poco más arriba para sobresalir de las viñetas */
+  transform:translateX(-50%);
+  width:1505.5px;
+  max-width:100%;
+  height:auto; /* proporcional: evita que la altura fija provoque scroll */
+  /* Limitar la altura para que no provoque overflow vertical */
+  max-height:calc(100vh - 120px - var(--header-h) - 16px);
+  object-fit:contain;
+  z-index:0; /* detrás de las viñetas */
+  pointer-events:none;
+  opacity:1;
+}
+
+/* Mask positioned at bottom-left of the bg-vector (no JS) */
+.mask-group{
+  position:absolute;
+  width:30px;
+  height:76px;
+  /* align to bg-vector's bottom-left using bg position/size variables */
+  left:calc(50% - (var(--bg-w) / 2) + 12px);
+  top:calc(120px + 483.23px - 76px + 12px);
+  transform:none;
+  z-index:1; /* above bg-vector but below cards */
+  pointer-events:none;
+} 
+
+/* Responsive fallback: if container narrows, pin mask near left edge */
+@media (max-width:1000px){
+  .mask-group{left:12px;top:calc(100px + 260px - 76px + 12px)}
+} 
+@media (max-width:640px){
+  .mask-group{left:12px;top:calc(88px + 260px - 76px + 12px);width:24px;height:60px}
+}
+
+/* Nubes pegadas al top del body */
+.cloud{position:fixed;top:0;pointer-events:none;z-index:1;opacity:1}
+.cloud-left{left:0;transform:translateX(0);width:200px;max-width:20vw}
+.cloud-right{right:0;transform:translateX(0);width:200px;max-width:20vw}
+@media (max-width:1000px){
+  /* en pantallas pequeñas empujar ligeramente desde los bordes */
+  .cloud-left{left:8px}
+  .cloud-right{right:8px}
+}
+@media (max-width:640px){
+  .cloud-left,.cloud-right{width:120px;max-width:32vw}
+}
+
+/* Evitar overflow vertical causado por elementos absolutos en pantallas pequeñas */
+@media (max-width:1000px){
+  .container{overflow-y:hidden}
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:16px;
+  background:transparent;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .28s ease, transform .28s ease, background-color .28s ease, color .28s ease;
+  z-index:5;
+} 
+.overlay h3{
+  margin:0 0 8px;
+  color:#FFF;
+  text-align:center;
+  font-family:'Joan', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size:24px;
+  font-style:normal;
+  font-weight:400;
+  line-height:normal;
+  margin-bottom:8px;
+}
+.overlay p{margin:0;font-size:0.95rem;max-width:90%}
+/* Hover / focus / active */
+.card:hover,.card:focus,.card.active{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 14px 30px rgba(0,0,0,0.25);
+  border-radius:30px;
+  background:#5D672B;
+}
+.card:hover img,.card:focus img,.card.active img{
+  transform:scale(1.06);
+  opacity:0;visibility:hidden;
+}
+.card:hover .overlay,.card:focus .overlay,.card.active .overlay{
+  opacity:1;transform:translateY(0);background:#5D672B;color:#fff;z-index:10
+}
+
+@media (max-width:1000px){
+  .cards{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:640px){
+  .site-header{padding:28px 12px}
+  .container{padding:20px}
+  .cards{flex-direction:column;gap:16px;padding:32px 0 0}
+  .card{width:92%;height:auto}
+  .card img{width:100%;height:260px;object-fit:cover}
+}
+
+/* Asegurar que la sección cubre la altura de la ventana para respetar los 150.5px */
+.experiencia{min-height:100vh;position:relative;box-sizing:border-box}
+
+/* Controles en esquina inferior izquierda */
+.corner-controls{position:fixed;left:20px;bottom:8px;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls .poly{position:absolute;left:0;bottom:0;width:98px;height:98px;transition:transform .5s ease;display:block}
+.corner-controls .poly:hover{transform:rotate(180deg)}
+.corner-controls .flechas{position:absolute;left:70px;bottom:16px;width:88px;height:50px;display:block}
+
+/* Controles en esquina inferior derecha (espejo) */
+.corner-controls.right{position:fixed;right:20px;bottom:8px;left:auto;width:120px;height:98px;z-index:100;pointer-events:auto;display:block}
+.corner-controls.right .poly{position:absolute;right:0;bottom:0;left:auto;width:98px;height:98px;transition:transform .5s ease;display:block}
+.corner-controls.right .flechas{position:absolute;right:70px;bottom:16px;left:auto;width:88px;height:50px;display:block}
+
+/* Ajustes responsivos para móviles */
+@media (max-width:640px){
+  .corner-controls{left:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls .poly{width:78px;height:78px}
+  .corner-controls .flechas{left:58px;bottom:8px;width:68px;height:40px}
+
+  .corner-controls.right{right:12px;bottom:6px;width:98px;height:78px}
+  .corner-controls.right .poly{width:78px;height:78px}
+  .corner-controls.right .flechas{right:58px;bottom:8px;width:68px;height:40px}
+}
+
+/* Accesibilidad */
+.card:focus{outline:3px solid rgba(255,255,255,0.14);outline-offset:6px}
+
+/* Pequeños toques responsivos y de presentación */
+main{width:100%;flex:1}
+
+
+/*colores*/
+:root {
+    --blue: #006E96;
+    --light-blue: #0093C4;
+    --orange: #F4A83C;
+    --light-orange: #F1BC71;
+    --white: #FFFFFF;
+    --black: #000000;
+    --light-blue-bg: #77D5D8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+/*HOME*/
+body {
+    margin:0%;
+    padding:0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.home-container{
+    width: 1512px;
+    height:100vh;
+    background:#006E96;
+    margin:0; /* inner element, wrapper handles centering */
+    display:block;
+    --flatWidth: 884px;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    position: static; /* no longer the positioning reference */
+}
+/* Wrapper that holds the clipped container and the plane as siblings.
+   Ensure the wrapper is positioned so the plane can be placed relative to it. */
+.home-title{ 
+    color: #F4A83C;
+    text-align:center;
+    text-shadow: -2px 2px 7.6px #006E96;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 70px;
+    right: 134px;
+}
+
+.home-title .especial{
+    color: #F4A83C;
+    font-family: "Black Ops One";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.home-image{
+    width: 628px;
+    height: 639px;
+    position: absolute;
+    top: 40px;
+    left: 884px;
+}
+
+.home-description{
+    width: 693px;
+    height: 271px;
+    position: absolute; 
+    top: 250px;
+    right: 24px;
+    font-family: Joan;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #024F6B;
+    text-align: center;
+
+}
+
+.home-image2{
+    width: 989px;
+    height: 1102px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+/* Botón en el home container, 94px debajo del párrafo */
+.home-btn{
+    position: absolute;
+    top: 455px; /* 427px (top párrafo) + 271px (alto párrafo) + 94px separación */
+    right: 185px; /* alineado con la descripción */
+    display: inline-flex;
+    padding: 24px 66px;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 9px 9px 4px 0 rgba(0, 110, 150, 0.60);
+    cursor: pointer;
+    font-family: Joan;
+    margin-bottom: 122px;
+    margin-top: 94px;
+
+    color: #F1BC71;
+    text-align: center;
+    font-family: Joan;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Transition states: after 1s the page will get the `animate` class */
+.home-container{
+    transition: clip-path 0.8s ease 0ms;
+    -webkit-clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+    clip-path: polygon(0 0, var(--flatWidth) 0, 100% 50%, var(--flatWidth) 100%, 0 100%);
+}
+
+.home-image{
+    
+    transition: left 1.6s cubic-bezier(.4,1.5,.5,1) 0ms;
+  
+}
+
+
+/* Animated end state: only the clip-path and the plane move */
+.animate .home-container{
+    -webkit-clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+    clip-path: polygon(0 0, 540px 0, 350px 50%, 540px 100%, 0 100%);
+}
+
+.animate .home-image{
+    left: 62px; /* avión queda con 62px desde la izquierda */
+}
+
+
+/*Cargando*/
+:root{--bg:#f7f7fb;--bar-bg:#e6e6ef;--bar-fill:#F1BC71;} 
+		html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:var(--bg);}
+		.center{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+		#logo{max-width:180px;width:40%;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.08));}
+		.progress-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+		.progress-bar{width:220px;max-width:70vw;height:14px;background:var(--bar-bg);border-radius:12px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+		.progress{height:100%;width:0%;background:var(--bar-fill);transition:width 0.2s linear}
+		#percent{display:none}
+		@media (max-width:420px){#logo{width:50%}}
+/*PREGUNTA 1*/
+/*Pregunta 2*/
+/*Pregunta 3*/
+
+
+
+
+
+
+
+
+
+
+
+/*Transicion fotos*/
+
+.destino-container{background-color: var(--light-blue-bg);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px; /* reducir espacio superior para subir el h2 */
+    overflow: hidden; /* ocultar partes de las nubes fuera del contenedor */
+}
+
+/* ...existing code... */
+h2{
+    color: var(--black);
+    text-align: center;
+    font-family: "Black Ops One", cursive;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    position: absolute; /* mantener el título en la misma posición visual */
+    top: 50px; /* margen superior solicitado */
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    z-index: 1000; /* asegurar que el título quede por encima de las nubes */
+    margin: 0;
+    padding: 0;
+}
+.nubes{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0%); /* centrar horizontalmente, preparar para animación Y */
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    z-index: 1; /* asegurar que las nubes queden detrás del título */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    animation: cloudsMove 8s linear infinite;
+}
+
+.nubes-2{
+    /* empieza fuera abajo; la animación tiene delay para encajar con la primera */
+    transform: translateX(-50%) translateY(100%);
+    animation-delay: 0.2s;
+}
+
+@keyframes cloudsMove{
+    0%{ transform: translateX(-50%) translateY(0%); }
+    100%{ transform: translateX(-50%) translateY(-100%); }
+}
+
+/* Slider de destinos (cuadrado 280x300) */
+.slider-wrapper{
+    width: 318px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    top: 430px; /* un poco más arriba */
+    left: 637px; /* más a la izquierda */
+    transform: translateX(-50%);
+}
+.slider{
+    width: 250px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    background: #ddd;
+}
+.slider img{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+.slider img.active{
+    opacity: 1;
+}
+
+.camara{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* centrar horizontalmente */
+    width: 150px;
+    height: auto;
+    z-index: 2; /* asegurar que la cámara quede por encima de las nubes */
+    pointer-events: none; /* permitir clics a través de la imagen */
+    width: 600px;
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+/*revelacion y masinfo*/
+/* --- Animación de entrada para los rectángulos verticales --- */
+.rectangulos-info {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 2.2s ease, transform 2.2s ease;
+}
+.rectangulos-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* --- Animación de olas --- */
+@keyframes ola-move {
+  0% { transform: translateY(0) scaleX(1); }
+  20% { transform: translateY(-10px) scaleX(1.03); }
+  40% { transform: translateY(0) scaleX(0.98); }
+  60% { transform: translateY(10px) scaleX(1.01); }
+  80% { transform: translateY(0) scaleX(1.02); }
+  100% { transform: translateY(0) scaleX(1); }
+}
+.ola-img, .ola-img-grande {
+  animation: ola-move 3.5s ease-in-out infinite;
+}
+.ola-img-grande {
+  animation-delay: 0.2s;
+}
+.olas-inferiores .ola-img:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.olas-inferiores .ola-img:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.olas-inferiores .ola-img:nth-child(4) {
+  animation-delay: 1.1s;
+}
+.ola-img-grande {
+  width: 60vw;
+  height: 180%;
+  z-index: 31;
+}
+/* --- Olas inferiores en masinfo.html --- */
+.olas-inferiores {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 30;
+}
+.ola-img {
+  width: 25vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+/* --- Fin olas inferiores --- */
+/* --- Rectángulos verticales info en masinfo.html --- */
+/* --- Rectángulos verticales info en masinfo.html (ajustados) --- */
+.rectangulos-info {
+  position: fixed;
+/* Olas inferiores ajustadas para estar en el límite inferior */
+.ola-img {
+  width: 32vw;
+  height: 32vh;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.ola-img-grande {
+  width: 80vw;
+  height: 32vh;
+  margin-right: -8vw;
+  z-index: 31;
+}
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16vw;
+  z-index: 15;
+  pointer-events: none;
+}
+.rect-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 23px;
+  width: 280px;
+  min-width: 200px;
+  max-width: 340px;
+  padding: 48px 36px 48px 36px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  pointer-events: auto;
+}
+.rect-gastronomia {
+  background: #024F6B;
+  height: 570px;
+}
+.rect-cultura {
+  background: #FFF;
+  height: 470px;
+  align-self: flex-end;
+}
+.rect-historia {
+  background: #024F6B;
+  height: 400px;
+  align-self: flex-end;
+}
+.rect-titulo, .rect-desc {
+  color: #F4A83C;
+  text-align: center;
+  font-family: 'Joan', serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+.rect-desc {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* --- Fin rectángulos info --- */
+/* --- Fin rectángulos info --- */
+/* --- Botón retorno inicio en masinfo.html --- */
+.retorno-inicio-centro {
+  position: absolute;
+  top: 16vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.retorno-inicio-centro img {
+  width: 90px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(.4,1.6,.4,1);
+}
+.retorno-inicio-centro img:hover {
+  transform: scale(1.18);
+  filter: drop-shadow(0 2px 12px #024F6B44);
+}
+/* --- Fin botón retorno inicio --- */
+/* --- Estilos para masinfo.html --- */
+body.masinfo-bg {
+  background: rgba(119, 213, 216, 0.39);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+.union-izq {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px; /* 120px x 4 */
+  height: auto;
+  z-index: 10;
+}
+.union-der {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 480px; /* 120px x 4 */
+  height: auto;
+  z-index: 10;
+}
+.contenido-mas-info {
+  margin-top: 160px;
+  text-align: center;
+  color: #222;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+/* --- Fin estilos masinfo.html --- */
+body.revelacion-bg {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+.bg-blur {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover;
+  filter: blur(18px) brightness(0.8);
+  z-index: 1;
+}
+.destino-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.destino-img {
+  width: 1330px;
+  height: 872px;
+  aspect-ratio: 665/436;
+  max-width: 98vw;
+  max-height: 90vh;
+  border-radius: 83px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.destino-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 83px;
+  display: block;
+}
+.destino-titulo {
+  position: absolute;
+  top: 32px;
+  right: 40px;
+  text-align: right;
+  color: #FFF;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'Aclonica', sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  z-index: 3;
+}
+.destino-sub {
+  font-size: 32px;
+  color: #FFF;
+  font-family: 'Aclonica', sans-serif;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 8px;
+  font-weight: 400;
+}
+.destino-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #FFF;
+  color: #F4A83C;
+  font-family: 'Aclonica', sans-serif;
+  font-size: 32px;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 48px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+  z-index: 4;
+}
+.destino-btn:hover {
+  background: #F4A83C;
+  color: #FFF;
+}
+@media (max-width: 700px) {
+  .destino-img { width: 98vw; }
+  .destino-titulo { font-size: 36px; right: 16px; top: 16px; }
+  .destino-btn { font-size: 20px; padding: 12px 24px; }
+}
+.flechas,
+.flechas-right {
+  transition: transform 0.2s cubic-bezier(.4,1.5,.5,1);
+  cursor: pointer;
+}
